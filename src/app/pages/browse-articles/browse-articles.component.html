@@ -1,21 +1,9 @@
 <div class="content">
 
     <div class="articlesContainer">
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
-        <app-article-card></app-article-card>
+        @for (data of articleData; track $index) {
+            <app-article-card [data]="data"></app-article-card>
+        }
     </div>
 
 </div>

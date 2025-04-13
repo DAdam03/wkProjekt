@@ -1,9 +1,15 @@
 <nav>
     <ul>
       <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/profile">Profile</a></li>
-      <li><a routerLink="/browse-articles">Articles</a></li>
-      <!--<li><a routerLink="/view-article">Article</a></li>-->
+      
+      
+      <li><a routerLink="/browse-articles" (click)="closeMenu()">Articles</a></li>
+      @if (loggedIn){
+        <li><a routerLink="/profile" (click)="closeMenu()">Profile</a></li>
+      }
+
+      @if (!loggedIn){
+        <li><a routerLink="/login" (click)="closeMenu()">Login</a></li>
+      }
     </ul>
 </nav>

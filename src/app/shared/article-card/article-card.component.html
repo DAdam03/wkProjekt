@@ -1,25 +1,23 @@
 <mat-card class="article-card" appearance="outlined">
     <mat-card-header>
       <div mat-card-avatar class="profile-picture"></div>
-      <mat-card-title>Username</mat-card-title>
+      <mat-card-title>{{data.authorUserName}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="assets/test.png" alt="article image">
     <mat-card-content>
 
-        <div>2025. 02. 22.</div>
+        <div>{{data.createdTime}}</div>
         <mat-chip-set aria-label="Tags">
           <mat-chip>Tag1</mat-chip>
           <mat-chip>Tag2</mat-chip>
           <mat-chip>Tag3</mat-chip>
         </mat-chip-set>
 
-        <h4>Title</h4>
+        <h4>{{data.createdTime}}</h4>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nunc eros, commodo at mi a, bibendum congue enim. Vivamus non sem nec nunc elementum venenatis ut nec tortor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vestibulum dictum tortor, vel eleifend odio consequat a.
-        </p>
+        <p>{{data.description}}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>read more</button>
+      <button mat-button routerLink="/view-article">read more</button>
     </mat-card-actions>
   </mat-card>

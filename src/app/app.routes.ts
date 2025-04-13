@@ -7,15 +7,9 @@ import { ViewArticleComponent } from './pages/view-article/view-article.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
-    // Statikus elérési útvonalak
+
     { path: 'home', component: HomeComponent },
-    // Lazy loading a Tasks komponens
-    /*
-    {
-        path: 'tasks',
-        loadComponent: () => import('./pages/tasks/tasks.component').then(m => m.TasksComponent),
-    },
-    */
+
     { path: 'login', component: LoginComponent },
 
     { path: 'profile', component: ProfileComponent },
@@ -24,18 +18,10 @@ export const routes: Routes = [
 
     { path: 'view-article', component: ViewArticleComponent },
 
-    // Paraméterezett útvonalak
-    // { path: 'task-edit/:id', component: TaskEditComponent },
-
-    // Üres elérési út - alapértelmezett útvonal
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-    // Wildcard útvonal - ha egyik útvonal sem egyezik
-    //{ path: '**', component: HomeComponent }
-    
     { path: '**', redirectTo: 'home' },
 
-    // Útvonalak egymásba ágyazása
     /*
     {
         path: 'tasks',

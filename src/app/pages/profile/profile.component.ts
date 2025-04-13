@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { userData } from '../../shared/user-data';
 
 @Component({
   selector: 'app-profile',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-
+  firstUser = userData[0];
 }

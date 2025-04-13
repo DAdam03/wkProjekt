@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './shared/menu/menu.component';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -22,13 +22,22 @@ import { RouterLink } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'learnflow';
+export class AppComponent implements OnInit {
+  loggedIn = false;
 
-  /*
-  changePage(selectedPage: string) {
-    this.page = selectedPage;
-  }*/
+  ngOnInit(): void {
+    this.checkLoggedIn();
+  }
+
+  checkLoggedIn(): void {
+    this.loggedIn = localStorage.getItem('loggedIn') === 'true';
+  }
+
+  logout(): void {
+    localStorage.setItem('loggedIn', 'false');
+    this.loggedIn = false;
+    window.location.href = '/home';
+  }
 
   onToggleSidenav(sidenav: MatSidenav){
     sidenav.toggle();

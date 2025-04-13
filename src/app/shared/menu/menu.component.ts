@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatListModule } from '@angular/material/list'
 import { MatIconModule } from '@angular/material/icon';
@@ -19,10 +19,18 @@ export class MenuComponent{
 
   @Input() sidenav!: MatSidenav;
 
+  @Input() loggedIn: boolean = false;
+  @Output() logoutEvent = new EventEmitter<void>();
 
   closeMenu() {
     if (this.sidenav) {
       this.sidenav.close();
     }
+  }
+
+  logout() {
+    localStorage.setItem('loggedIn', 'false');
+    window.location.href = '/home';
+    this.closeMenu();
   }
 }

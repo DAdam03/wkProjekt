@@ -3,8 +3,8 @@ export class Article{
     authorUserName: string;
     createdTime: Date;
     title: string;
+    description: string;
     content: string;
-    imageURLs: string[];
     tags: string[];
     likedBy: string[];
     dislikedBy: string[];
