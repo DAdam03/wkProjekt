@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   imports: [
     CommonModule,
     FormsModule,
@@ -17,15 +17,16 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     RouterLink
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css'
 })
-export class LoginComponent {
+export class SignupComponent {
   email = new FormControl('');
   password = new FormControl('');
+  username = new FormControl('');
 
-  login() {
-    if (this.email.value === 'asd@asd.com' && this.password.value === 'asd') {
+  signup() {
+    if (!(this.email.value === '' || this.password.value === '' || this.username.value == "")) {
       
       localStorage.setItem('loggedIn', 'true');
       

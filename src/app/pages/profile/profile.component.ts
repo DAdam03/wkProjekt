@@ -9,4 +9,9 @@ import { userData } from '../../shared/user-data';
 })
 export class ProfileComponent {
   firstUser = userData[0];
+
+  logout(){
+    localStorage.setItem('loggedIn', 'false');
+    window.location.href = '/home';
+  }
 }

@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { BrowseArticlesComponent } from './pages/browse-articles/browse-articles.component';
 import { ViewArticleComponent } from './pages/view-article/view-article.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 export const routes: Routes = [
 
@@ -17,6 +18,8 @@ export const routes: Routes = [
     { path: 'browse-articles', component: BrowseArticlesComponent },
 
     { path: 'view-article', component: ViewArticleComponent },
+
+    { path: 'signup', component: SignupComponent },
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
