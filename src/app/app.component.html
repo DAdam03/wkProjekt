@@ -1,24 +1,5 @@
 
-<!--
-<app-menu (selectedPage)="changePage($event)"></app-menu>
-@if (page === "home") {
-  <div class="home">
-    <app-home></app-home>
-  </div>
-} @else if (page === 'login') {
-  <app-login></app-login>
-} @else if (page === 'profile') {
-  <app-profile></app-profile>
-} @else if (page === 'browse-articles') {
-  <app-browse-articles></app-browse-articles>
-} @else if (page === 'view-article') {
-  <app-view-article></app-view-article>
-} @else {
-  <div class="home">
-    <app-home></app-home>
-  </div>
-}
--->
+
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
@@ -32,14 +13,14 @@
         class="menu-toggle-button">
         <mat-icon>menu</mat-icon>
       </button>
-      <div>LearnFlow</div>
+      <div>Zene blog</div>
       <nav>
         <ul>
           <li><a routerLink="/home">Home</a></li>
           <li><a routerLink="/login">Login</a></li>
           <li><a routerLink="/profile">Profile</a></li>
           <li><a routerLink="/browse-articles">Articles</a></li>
-          <li><a routerLink="/view-article">Article</a></li>
+          <!--<li><a routerLink="/view-article">Article</a></li>-->
         </ul>
       </nav>
     </mat-toolbar>
