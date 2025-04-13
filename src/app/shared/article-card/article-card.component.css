@@ -1,0 +1,8 @@
+.article-card {
+    max-width: 400px;
+    margin: 20px;
+  }
+  
+  .profile-picture {
+    background-size: cover;
+  }
