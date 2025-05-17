@@ -1,8 +1,14 @@
 .example-card {
-    width: 75%;
-  }
-  
-  .example-header-image {
-    /*background-image: url('assets/test.png');*/
-    background-size: cover;
-  }
+  width: 75%;
+  margin-top: 20px;
+}
+
+.example-header-image {
+  /*background-image: url('assets/test.png');*/
+  background-size: cover;
+}
+
+.reply-card{
+  margin-left: 20px;
+}
+

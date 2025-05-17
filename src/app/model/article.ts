@@ -1,6 +1,6 @@
 export class Article{
-    id: number;
-    authorUserName: string;
+    id: string;
+    authorId: string;
     createdTime: Date;
     title: string;
     description: string;

@@ -1,15 +1,20 @@
-<mat-card class="example-card" appearance="outlined">
+<mat-card class="example-card" appearance="outlined" [class.reply-card] = "data.replyTo != ''">
     <mat-card-header>
       <div mat-card-avatar class="profilePicture"></div>
-      <mat-card-title>{{firstComment.writtenBy}}</mat-card-title>
-      <mat-card-subtitle>{{firstComment.createdTime}}</mat-card-subtitle>
+      <mat-card-title>{{data.writtenBy | username | async}}</mat-card-title>
+      <mat-card-subtitle>{{data.createdTime | datePipe}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
-        {{firstComment.content}}
+        {{data.content}}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Reply</button>
+      @if(data.replyTo == ""){
+        <button mat-button (click)="reply()">Reply</button>
+      }
+      @if(canDelete){
+        <button mat-button (click)="deleteComment()">Delete</button>
+      }
     </mat-card-actions>
 </mat-card>

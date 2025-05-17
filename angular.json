@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wk_projekt": {
+    "wkprojekt": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/wk_projekt",
+            "outputPath": "dist/wkprojekt",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wk_projekt:build:production"
+              "buildTarget": "wkprojekt:build:production"
             },
             "development": {
-              "buildTarget": "wk_projekt:build:development"
+              "buildTarget": "wkprojekt:build:development"
             }
           },
           "defaultConfiguration": "development"

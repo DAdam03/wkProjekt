@@ -1,8 +1,8 @@
 export class Comment{
-    id: number;
+    id: string;
     writtenBy: string;
-    articleId: number;
-    replyTo: number;
+    articleId: string;
+    replyTo: string;
     content: string;
     createdTime: Date;
 };

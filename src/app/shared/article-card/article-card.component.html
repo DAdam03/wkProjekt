@@ -1,23 +1,21 @@
 <mat-card class="article-card" appearance="outlined">
     <mat-card-header>
       <div mat-card-avatar class="profile-picture"></div>
-      <mat-card-title>{{data.authorUserName}}</mat-card-title>
+      <mat-card-title>{{data.authorId | username | async}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="assets/test.png" alt="article image">
     <mat-card-content>
 
-        <div>{{data.createdTime}}</div>
+        <div>{{data.createdTime | datePipe}}</div>
         <mat-chip-set aria-label="Tags">
-          <mat-chip>Tag1</mat-chip>
-          <mat-chip>Tag2</mat-chip>
-          <mat-chip>Tag3</mat-chip>
+          @for(tag of data.tags; track $index){
+            <mat-chip>{{ tag }}</mat-chip>
+          }
         </mat-chip-set>
-
-        <h4>{{data.createdTime}}</h4>
 
         <p>{{data.description}}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button routerLink="/view-article">read more</button>
+      <button mat-button [routerLink]="['/view-article', data.id]">read more</button>
     </mat-card-actions>
   </mat-card>

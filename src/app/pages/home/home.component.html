@@ -1,22 +1,11 @@
 <div class="content">
-    <h2>Newest articles</h2>
+    <h2>Latest articles</h2>
 
     <div class="article-list">
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
+        @for (data of articleData; track $index) {
+            <app-article-card [data]="data"></app-article-card>
+        }
     </div>
     
-    <h2>Best articles</h2>
-    
-    <div class="article-list">
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-        <app-article-card [data]="firstArticle"></app-article-card>
-    </div>
 </div>
 

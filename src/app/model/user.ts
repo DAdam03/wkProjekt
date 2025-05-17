@@ -1,7 +1,7 @@
 export class User {
-    username: string; // egyedi
+    id: string;
+    username: string;
     password: string;
     email: string;
-    profilePictureURL: string;
     admin: boolean;
 };

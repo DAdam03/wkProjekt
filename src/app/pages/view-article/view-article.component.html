@@ -1,28 +1,44 @@
 <div class="content">
-    <img src="assets/test.png" class="titleImg">
-    <h1>Title</h1>
-    <h3>Author</h3>
-    <p>2025. 02. 22.</p>
-    <mat-chip-set aria-label="Tags">
-        <mat-chip>Tag1</mat-chip>
-        <mat-chip>Tag2</mat-chip>
-        <mat-chip>Tag3</mat-chip>
-    </mat-chip-set>
-    
-    <p class="contentText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, enim vitae luctus vestibulum, nunc sem ullamcorper mauris, a fermentum quam tortor non ipsum. Pellentesque tincidunt pharetra vestibulum. Donec suscipit, sapien at consequat suscipit, augue turpis elementum tellus, a facilisis enim justo a ex.
-    </p>
+    @if(articleData){
+        <img src="assets/test.png" class="titleImg">
+        <h1>{{ articleData.title }}</h1>
+        <h3>{{ articleData.authorId | username | async }}</h3>
+        <p>{{ articleData.createdTime | datePipe }}</p>
+        <mat-chip-set aria-label="Tags">
+            @for(tag of articleData.tags; track $index){
+                <mat-chip>{{ tag }}</mat-chip>
+            }
+        </mat-chip-set>
 
-    <img src="assets/test.png" class="contentImg">
+        @if(curUserId == articleData.authorId){
+            <button mat-flat-button (click)="deleteArticle()">Delete article</button><br>
+        }
+        
+        
+        <p class="contentText">
+            {{ articleData.content }}
+        </p>
 
-    <p class="contentText">
-        Donec quam leo, ornare hendrerit feugiat non, volutpat a nibh. Donec eget venenatis sapien. Duis luctus lacus lacus, vitae fringilla ex finibus imperdiet. Nullam vestibulum tellus eget turpis gravida, vitae fringilla erat elementum.
-    </p>
-
-    <h2>Comments</h2>
-    <div class="comments">
-        <app-comment-card></app-comment-card>
-        <app-comment-card></app-comment-card>
-        <app-comment-card></app-comment-card>
-    </div>
+        <h2 #commentStart>Comments</h2>
+        @if(replyingTo){
+            <h3>Replying to {{ replyingTo.writtenBy | username | async }}</h3>
+        }
+        <form [formGroup]="commentForm" (ngSubmit)="saveComment()">
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <input matInput type="text" formControlName="comment">
+            </mat-form-field><br>
+        <button mat-flat-button type="submit">Send</button>
+        </form>
+        <div class="comments">
+            @for(comment of commentData; track $index){
+                <app-comment-card [data]="comment" [canDelete]="comment.writtenBy == curUserId" (replyEvent)="reply($event, commentStart)" (deleteEvent)="deleteComment($event)"></app-comment-card>
+                @for(reply of replyData; track $index){
+                    @if(reply.replyTo == comment.id){
+                        <app-comment-card [data]="reply" [canDelete]="reply.writtenBy == curUserId" (deleteEvent)="deleteComment($event)"></app-comment-card>
+                    }
+                }
+            }
+        </div>
+    }
 </div>

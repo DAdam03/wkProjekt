@@ -6,33 +6,28 @@ import { BrowseArticlesComponent } from './pages/browse-articles/browse-articles
 import { ViewArticleComponent } from './pages/view-article/view-article.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { CreateArticleComponent } from './pages/create-article/create-article.component';
+
+import { authGuard, publicGuard } from './shared/guards/auth/auth.guard';
 
 export const routes: Routes = [
 
     { path: 'home', component: HomeComponent },
 
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent, canActivate: [publicGuard] },
 
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+
+    { path: 'create-arcticle', component: CreateArticleComponent, canActivate: [authGuard] },
 
     { path: 'browse-articles', component: BrowseArticlesComponent },
 
-    { path: 'view-article', component: ViewArticleComponent },
+    { path: 'view-article/:id', component: ViewArticleComponent },
 
-    { path: 'signup', component: SignupComponent },
+    { path: 'signup', component: SignupComponent, canActivate: [publicGuard] },
 
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     { path: '**', redirectTo: 'home' },
 
-    /*
-    {
-        path: 'tasks',
-        title: 'Tasks',
-        component: TasksComponent,
-        children: [
-            { path: 'completed', component: CompletedComponent },
-        ]
-    },
-    */
 ];

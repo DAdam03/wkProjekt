@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleCardComponent } from '../../shared/article-card/article-card.component';
-import { articleData } from '../../shared/article-data';
+import { Article } from '../../model/article';
+import { ArticleService } from '../../shared/services/article.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,14 @@ import { articleData } from '../../shared/article-data';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  articleData = articleData;
-  firstArticle = articleData[0];
+export class HomeComponent implements OnInit {
+  articleData: Article[] = [];
+  
+  constructor(private articleService: ArticleService){}
+  
+  ngOnInit(): void {
+    this.articleService.getLatestArticles().then(
+      a => {this.articleData = a;}
+    ).catch(error => {});
+  }
 }

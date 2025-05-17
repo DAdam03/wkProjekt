@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleCardComponent } from '../../shared/article-card/article-card.component';
-import { articleData } from '../../shared/article-data';
+import { Article } from '../../model/article';
+import { ArticleService } from '../../shared/services/article.service';
 
 @Component({
   selector: 'app-browse-articles',
@@ -8,6 +9,14 @@ import { articleData } from '../../shared/article-data';
   templateUrl: './browse-articles.component.html',
   styleUrl: './browse-articles.component.css'
 })
-export class BrowseArticlesComponent {
-  articleData = articleData;
+export class BrowseArticlesComponent implements OnInit {
+  articleData: Article[] = [];
+
+  constructor(private articleService: ArticleService){}
+
+  ngOnInit(): void {
+    this.articleService.getAllArticles().then(
+      a => {this.articleData = a;}
+    ).catch(error => {});
+  }
 }

@@ -5,7 +5,9 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -24,9 +26,15 @@ import { RouterLink } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   loggedIn = false;
+  private authSubscription?: Subscription;
+
+  constructor( private authService: AuthService, private router: Router ){}
 
   ngOnInit(): void {
-    this.checkLoggedIn();
+    this.authSubscription = this.authService.currentUser.subscribe(user => {
+      this.loggedIn = !!user;
+      localStorage.setItem('isLoggedIn', this.loggedIn ? 'true' : 'false');
+    });
   }
 
   checkLoggedIn(): void {
@@ -34,9 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    localStorage.setItem('loggedIn', 'false');
-    this.loggedIn = false;
-    window.location.href = '/home';
+    this.authService.logout();
   }
 
   onToggleSidenav(sidenav: MatSidenav){
